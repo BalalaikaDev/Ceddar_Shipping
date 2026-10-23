@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""Operator Training — progress console.
+"""Cedar Shipping — progress console.
 
-Runs each mission's tests and shows how far you've cleared.
-    python play.py
+    python play.py            show the dispatch log once
+    python play.py --watch    live mode: re-checks automatically every time you
+                              save a mission file (no commands to re-type)
 """
+import os
 import subprocess
 import sys
+import time
 from pathlib import Path
 
-CYAN, GREEN, DIM, MAG, RESET = "\033[36m", "\033[92m", "\033[90m", "\033[95m", "\033[0m"
+CYAN, GREEN, DIM, MAG, YELL, RESET = (
+    "\033[36m", "\033[92m", "\033[90m", "\033[95m", "\033[93m", "\033[0m")
 
 MISSIONS = [
     # Act I — Deckhand
@@ -31,17 +35,18 @@ def mission_passes(num: str) -> bool:
     test = Path("tests") / f"test_m{num}.py"
     if not test.exists():
         return False
+    # run via "-m pytest" so the project root is importable no matter what
     r = subprocess.run([sys.executable, "-m", "pytest", str(test)],
                        capture_output=True)
     return r.returncode == 0
 
 
-def main() -> int:
+def render() -> int:
     results = [(n, t, c, mission_passes(n)) for n, t, c in MISSIONS]
     cleared = sum(1 for _, _, _, ok in results if ok)
     total = len(results)
 
-    print(f"\n{CYAN}╔═══════════════════════════════════════════╗{RESET}")
+    print(f"{CYAN}╔═══════════════════════════════════════════╗{RESET}")
     print(f"{CYAN}║       HARBOUR MASTER // DISPATCH LOG       ║{RESET}")
     print(f"{CYAN}╚═══════════════════════════════════════════╝{RESET}\n")
     for n, title, concept, ok in results:
@@ -58,10 +63,43 @@ def main() -> int:
     else:
         nxt = next(n for n, _, _, ok in results if not ok)
         print(f"  next up: {CYAN}briefs/m{nxt}.md{RESET}  →  edit "
-              f"{CYAN}missions/m{nxt}_*.py{RESET}  →  "
-              f"{CYAN}pytest tests/test_m{nxt}.py{RESET}\n")
-    return 0
+              f"{CYAN}missions/m{nxt}_*.py{RESET}\n")
+    return cleared
+
+
+def _clear():
+    os.system("cls" if os.name == "nt" else "clear")
+
+
+def _fingerprint() -> float:
+    """Latest change time across mission + test files — cheap change detector."""
+    latest = 0.0
+    for folder in ("missions", "tests"):
+        for p in Path(folder).glob("*.py"):
+            latest = max(latest, p.stat().st_mtime)
+    return latest
+
+
+def watch():
+    last = -1.0
+    print(f"{YELL}watch mode — edit a mission, hit save, and this updates itself. "
+          f"Ctrl+C to stop.{RESET}")
+    time.sleep(1.0)
+    try:
+        while True:
+            fp = _fingerprint()
+            if fp != last:
+                last = fp
+                _clear()
+                render()
+                print(f"  {DIM}watching for changes… (Ctrl+C to stop){RESET}")
+            time.sleep(1.0)
+    except KeyboardInterrupt:
+        print(f"\n{DIM}stopped watching. fair winds, captain.{RESET}")
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    if "--watch" in sys.argv or "-w" in sys.argv:
+        watch()
+    else:
+        render()
