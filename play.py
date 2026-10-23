@@ -11,11 +11,11 @@ from pathlib import Path
 CYAN, GREEN, DIM, MAG, RESET = "\033[36m", "\033[92m", "\033[90m", "\033[95m", "\033[0m"
 
 MISSIONS = [
-    ("01", "Identify", "variables & return"),
-    ("02", "Triangulate", "numbers & arithmetic"),
-    ("03", "Threat check", "if / else"),
-    ("04", "Port scan", "loops & lists"),
-    ("05", "Pull a record", "dictionaries"),
+    ("01", "Sign the logbook", "functions & return"),
+    ("02", "Plot a course", "numbers & division"),
+    ("03", "Weigh the cargo", "if / else"),
+    ("04", "Load the hold", "loops & lists"),
+    ("05", "Read the manifest", "dictionaries"),
 ]
 
 
@@ -34,7 +34,7 @@ def main() -> int:
     total = len(results)
 
     print(f"\n{CYAN}╔═══════════════════════════════════════════╗{RESET}")
-    print(f"{CYAN}║        OPERATOR TRAINING // CONSOLE        ║{RESET}")
+    print(f"{CYAN}║       HARBOUR MASTER // DISPATCH LOG       ║{RESET}")
     print(f"{CYAN}╚═══════════════════════════════════════════╝{RESET}\n")
     for n, title, concept, ok in results:
         mark = f"{GREEN}● CLEARED{RESET}" if ok else f"{DIM}○ locked {RESET}"
@@ -46,7 +46,7 @@ def main() -> int:
     bar = f"{GREEN}{'█' * filled}{DIM}{'░' * (bar_len - filled)}{RESET}"
     print(f"\n  progress  {bar}  {MAG}{cleared}/{total}{RESET}\n")
     if cleared == total:
-        print(f"  {GREEN}All missions cleared. Stand by for the next drop.{RESET}\n")
+        print(f"  {GREEN}All hands cleared. Act II — the Fleet — is next.{RESET}\n")
     else:
         nxt = next(n for n, _, _, ok in results if not ok)
         print(f"  next up: {CYAN}briefs/m{nxt}.md{RESET}  →  edit "

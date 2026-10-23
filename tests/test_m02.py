@@ -1,11 +1,10 @@
-from missions.m02_triangulate import midpoint
+from missions.m02_course import eta_hours
 
 
 def test_basic():
-    assert midpoint(0, 10) == 5
-    assert midpoint(4, 4) == 4
+    assert eta_hours(100, 10) == 10
+    assert eta_hours(50, 25) == 2
 
 
-def test_negatives_and_floats():
-    assert midpoint(-2, 2) == 0
-    assert midpoint(1, 2) == 1.5
+def test_fractional():
+    assert eta_hours(30, 4) == 7.5

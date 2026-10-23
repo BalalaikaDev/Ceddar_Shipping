@@ -1,13 +1,13 @@
-from missions.m05_records import lookup
+from missions.m05_manifest import value_of
 
-CASE = {"e1": "Alice", "e2": "Bob"}
+MANIFEST = {"c1": 100, "c2": 250}
 
 
 def test_found():
-    assert lookup(CASE, "e1") == "Alice"
-    assert lookup(CASE, "e2") == "Bob"
+    assert value_of(MANIFEST, "c1") == 100
+    assert value_of(MANIFEST, "c2") == 250
 
 
-def test_missing_returns_unknown():
-    assert lookup(CASE, "e9") == "UNKNOWN"
-    assert lookup({}, "e1") == "UNKNOWN"
+def test_missing_returns_zero():
+    assert value_of(MANIFEST, "c9") == 0
+    assert value_of({}, "c1") == 0

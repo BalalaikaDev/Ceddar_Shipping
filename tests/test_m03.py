@@ -1,11 +1,11 @@
-from missions.m03_threatcheck import classify
+from missions.m03_weigh import decide
 
 
-def test_flag():
-    assert classify(70) == "FLAG"
-    assert classify(95) == "FLAG"
+def test_load_when_it_fits():
+    assert decide(10, 20) == "LOAD"
+    assert decide(20, 20) == "LOAD"      # exactly full still fits
 
 
-def test_clear():
-    assert classify(69) == "CLEAR"
-    assert classify(0) == "CLEAR"
+def test_leave_when_too_heavy():
+    assert decide(21, 20) == "LEAVE BEHIND"
+    assert decide(100, 5) == "LEAVE BEHIND"

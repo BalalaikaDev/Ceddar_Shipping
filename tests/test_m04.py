@@ -1,11 +1,11 @@
-from missions.m04_scan import open_ports
+from missions.m04_load import load_hold
 
 
-def test_filters_even():
-    assert open_ports([22, 80, 443, 8080]) == [22, 80, 8080]
+def test_filters_by_limit():
+    assert load_hold([10, 50, 30, 80], 50) == [10, 50, 30]
 
 
-def test_keeps_order_and_handles_empty():
-    assert open_ports([]) == []
-    assert open_ports([1, 3, 5]) == []
-    assert open_ports([2, 1, 4, 3]) == [2, 4]
+def test_order_and_empty():
+    assert load_hold([], 10) == []
+    assert load_hold([99, 100], 50) == []
+    assert load_hold([5, 60, 20], 20) == [5, 20]

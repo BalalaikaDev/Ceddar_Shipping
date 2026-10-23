@@ -16,7 +16,7 @@ experience needed.
    ```
    python play.py
    ```
-2. Read the next brief, e.g. `briefs/m01.md`.
+2. Read the next brief, e.g. `briefs/m01.md` (Sign the logbook).
 3. Open the matching file, e.g. `missions/m01_identify.py`, and replace the
    `TODO` / `raise NotImplementedError` line with your code.
 4. Run that mission's test:

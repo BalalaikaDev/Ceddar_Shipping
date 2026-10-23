@@ -1,15 +1,15 @@
-from missions.m01_identify import callsign
+from missions.m01_signon import captain
 
 
 def test_returns_a_string():
-    assert isinstance(callsign(), str), "callsign() must return a string"
+    assert isinstance(captain(), str), "captain() must return a string"
 
 
 def test_not_empty():
-    assert callsign().strip() != "", "your callsign can't be empty"
+    assert captain().strip() != "", "your captain name can't be empty"
 
 
-def test_lowercase_handle():
-    cs = callsign()
-    assert cs == cs.lower(), "keep your callsign lowercase"
-    assert " " not in cs, "a callsign is one word — no spaces"
+def test_single_lowercase_word():
+    name = captain()
+    assert name == name.lower(), "keep it lowercase"
+    assert " " not in name, "one word — no spaces"
