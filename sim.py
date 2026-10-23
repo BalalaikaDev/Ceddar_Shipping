@@ -29,7 +29,8 @@ def gather() -> dict:
     """Run each mission; record done / attempted-wrong / untouched + failure signals."""
     s = {"status": {}, "captain": None, "captain_bad": None, "eta": None, "eta_bad": None,
          "cargo": 0, "overload": False, "value": None, "profit": None,
-         "fleet": None, "available": None, "total": 11}
+         "fleet": None, "available": None, "routes": None, "berth": None,
+         "container": None, "total": 11}
     st = s["status"]
 
     # M01 — captain name
@@ -138,18 +139,47 @@ def gather() -> dict:
     except Exception:
         st[7] = "todo"
 
-    # M09-M11 — progress only (not drawn yet)
-    for n, mod, fn, args, exp in [
-        (9, "m09_routes", "neighbours", ({"A": ["B"]}, "A"), ["B"]),
-        (10, "m10_harbour", "berth_for", ({"assignments": {"N": "B12"}}, "N"), "B12"),
-        (11, "m11_container", "pack", ([{"weight": 10}, {"weight": 5}],), {"units": 2, "weight": 15}),
-    ]:
-        try:
-            m = __import__(f"missions.{mod}", fromlist=[fn])
-            v, ok = _call(getattr(m, fn), *args)
-            st[n] = "done" if (ok and v == exp) else ("wrong" if ok and v else "todo")
-        except Exception:
-            st[n] = "todo"
+    # M09 — route network (dict of lists)
+    try:
+        from missions.m09_routes import neighbours, has_lane
+        net = {"A": ["B", "C"], "B": ["A"], "C": []}
+        nb, ok1 = _call(neighbours, net, "A")
+        hl, ok2 = _call(has_lane, net, "A", "B")
+        if ok1 and ok2 and nb == ["B", "C"] and hl is True:
+            st[9] = "done"; s["routes"] = net
+        elif (ok1 and nb) or (ok2 and hl):
+            st[9] = "wrong"
+        else:
+            st[9] = "todo"
+    except Exception:
+        st[9] = "todo"
+
+    # M10 — berth assignment (nested dict)
+    try:
+        from missions.m10_harbour import berth_for
+        resp = {"status": "ok", "assignments": {"Nimbus": "B12"}}
+        v, ok = _call(berth_for, resp, "Nimbus")
+        if ok and v == "B12":
+            st[10] = "done"; s["berth"] = "B12"
+        elif ok and v not in ("NONE", None, ""):
+            st[10] = "wrong"
+        else:
+            st[10] = "todo"
+    except Exception:
+        st[10] = "todo"
+
+    # M11 — pack a container
+    try:
+        from missions.m11_container import pack
+        v, ok = _call(pack, [{"weight": 10}, {"weight": 5}])
+        if ok and v == {"units": 2, "weight": 15}:
+            st[11] = "done"; s["container"] = v
+        elif ok and v not in ({"units": 0, "weight": 0}, None):
+            st[11] = "wrong"
+        else:
+            st[11] = "todo"
+    except Exception:
+        st[11] = "todo"
 
     s["cleared"] = [i for i in range(1, 12) if st.get(i) == "done"]
     return s
@@ -293,6 +323,38 @@ def scene(s) -> str:
                      f'<text x="{fx+22}" y="{H-24}" text-anchor="middle" font-size="9" fill="{col}">{name}</text>')
         if s["available"] is not None:
             o.append(f'<text x="{W-16}" y="{H-44}" text-anchor="end" font-size="9" fill="{GREEN}">can carry 50t ✓</text>')
+
+    # ---- Act II overlays ----
+    # M09 — route network (dict of lists drawn as a little graph)
+    if s["routes"]:
+        nodes = {"A": (46, 70), "B": (118, 52), "C": (104, 116)}
+        for a, links in s["routes"].items():
+            for b in links:
+                if a in nodes and b in nodes:
+                    x1, y1 = nodes[a]; x2, y2 = nodes[b]
+                    o.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{CYAN}" stroke-opacity="0.55"/>')
+        for name, (x, y) in nodes.items():
+            o.append(f'<circle cx="{x}" cy="{y}" r="10" fill="#11132b" stroke="{CYAN}" filter="url(#g)"/>'
+                     f'<text x="{x}" y="{y+4}" text-anchor="middle" font-size="10" fill="{CYAN}">{name}</text>')
+        o.append(f'<text x="46" y="38" font-size="9" fill="{DIM}" letter-spacing="1">ROUTE NET</text>')
+
+    # M10 — berth assignment at Port B (nested dict → where you dock)
+    if s["berth"]:
+        o.append(f'<text x="{W-65}" y="{sea_y-50}" text-anchor="middle" font-size="11" fill="{GREEN}" '
+                 f'filter="url(#g)">⚓ {html.escape(str(s["berth"]))}</text>')
+
+    # M11 — a packed container on the dock (standard unit)
+    if s["container"]:
+        c = s["container"]
+        cx, cy = 128, sea_y - 20
+        for i in range(2):
+            o.append(f'<rect x="{cx}" y="{cy-i*13}" width="34" height="12" rx="1" fill="{GREEN}" '
+                     f'fill-opacity="0.85" stroke="{BG}"/>')
+            for gx in (cx+11, cx+23):
+                o.append(f'<line x1="{gx}" y1="{cy-i*13}" x2="{gx}" y2="{cy-i*13+12}" stroke="{BG}" stroke-opacity="0.4"/>')
+        o.append(f'<text x="{cx+17}" y="{cy-32}" text-anchor="middle" font-size="9" fill="{GREEN}">'
+                 f'{c["units"]}u · {c["weight"]}t</text>')
+
     o.append('</svg>')
     return "".join(o)
 

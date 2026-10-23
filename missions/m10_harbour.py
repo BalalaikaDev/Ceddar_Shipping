@@ -1,18 +1,20 @@
 """Mission 10 — Radio the harbour.
 
-You radio the harbour and it answers with a data packet (a dictionary) — the
-same shape a web API (like FastAPI) sends back as JSON. Dig out the berth your
-boat was assigned.
+The harbour answers with a data packet (a dict inside a dict) — the shape a web
+API like FastAPI returns as JSON. Dig out your berth.
 
 A response looks like:
     {"status": "ok", "assignments": {"Nimbus": "B12", "Tug": "A3"}}
 
-Concepts: reading NESTED dictionaries, safe lookups with defaults.
+Concepts: nested dictionaries, safe lookup with a default.
 """
 
 
 def berth_for(response: dict, boat_name: str) -> str:
-    """Return the berth assigned to boat_name, or "NONE" if it wasn't assigned."""
-    # TODO: reach into response["assignments"], then the boat_name, default "NONE".
-    # Hint: response.get("assignments", {}).get(boat_name, "NONE")
-    raise NotImplementedError("Mission 10: return the assigned berth")
+    # Step 1 — reach the assignments dict INSIDE the response.
+    assignments = {}      # TODO: replace {} with  response.get("assignments", {})
+
+    # Step 2 — look up this boat's berth; default to "NONE".
+    berth = "NONE"        # TODO: replace "NONE" with  assignments.get(boat_name, "NONE")
+
+    return berth

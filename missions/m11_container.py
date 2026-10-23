@@ -1,18 +1,21 @@
 """Mission 11 — Pack a container.
 
-Loose cargo is a pain: every port handles it differently. So you pack items into
-a standard container — one predictable unit any boat can carry and any port can
-stack. (This is the idea behind Docker: package things so they run the same
-everywhere.)
+Pack loose items into one standard unit any boat can carry and any port can
+stack. (The idea behind Docker: package things so they run the same everywhere.)
 
-Given a list of items, each a dict with a "weight", return a container summary:
-    {"units": <how many items>, "weight": <their total weight>}
+Given items like [{"weight": 10}, {"weight": 5}], return:
+    {"units": 2, "weight": 15}
 
-Concepts: looping over a list of dicts, summing, building a dict to return.
+Concepts: len(), sum() over a list of dicts, building a dict to return.
 """
 
 
 def pack(items: list[dict]) -> dict:
-    """Return {"units": count of items, "weight": total of their weights}."""
-    # TODO: count the items and add up their "weight" values.
-    raise NotImplementedError("Mission 11: return the container summary")
+    # Step 1 — how many items are there?
+    units = 0        # TODO: replace 0 with  len(items)
+
+    # Step 2 — add up their weights.
+    weight = 0       # TODO: replace 0 with  sum(i["weight"] for i in items)
+
+    # Step 3 — return the standard container summary (a dict).
+    return {"units": units, "weight": weight}

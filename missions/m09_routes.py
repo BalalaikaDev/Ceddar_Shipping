@@ -1,24 +1,23 @@
 """Mission 09 — The route network.
 
-Ports are linked by shipping lanes. We store the network as a dictionary mapping
-each port to the list of ports it has a direct lane to — an "adjacency list".
-This is exactly how a graph database like Neo4j thinks: nodes and the
-relationships between them.
+Ports linked by lanes, stored as a dict of lists (an "adjacency list"). This is
+how a graph database like Neo4j thinks: nodes + the links between them.
 
-Concepts: a dict of lists (nested data), safe lookup.
+Concepts: a dict of lists, safe lookup, reusing a function.
 
-Example network:
-    {"A": ["B", "C"], "B": ["A"], "C": []}
+Example: {"A": ["B", "C"], "B": ["A"], "C": []}
 """
 
 
 def neighbours(lanes: dict, port: str) -> list:
-    """Return the list of ports directly reachable from `port` (or [] if none)."""
-    # TODO: look up port in lanes; default to an empty list.
-    raise NotImplementedError("Mission 09a: return the neighbours")
+    # Step 1 — the ports directly reachable from `port` (empty list if unknown).
+    links = []       # TODO: replace [] with  lanes.get(port, [])
+    return links
 
 
 def has_lane(lanes: dict, start: str, end: str) -> bool:
-    """Return True if there is a direct lane from `start` to `end`."""
-    # TODO: is `end` among the neighbours of `start`? (reuse neighbours())
-    raise NotImplementedError("Mission 09b: return whether a direct lane exists")
+    # Step 1 — get start's neighbours (REUSE the function above).
+    links = []       # TODO: replace [] with  neighbours(lanes, start)
+
+    # Step 2 — is `end` one of them?
+    return end in links
