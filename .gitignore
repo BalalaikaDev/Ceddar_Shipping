@@ -3,3 +3,5 @@ __pycache__/
 .pytest_cache/
 graphify-out/cache/
 graphify-out/graph.html
+voyage.html
+voyage_*.html

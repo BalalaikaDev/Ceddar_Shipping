@@ -39,6 +39,11 @@ into a working mini-platform.*
 ## Set sail
 ```
 pip install -r requirements.txt
-python play.py
+python play.py --watch
 ```
-Then follow `HOW_TO_PLAY.md`. Fair winds, captain.
+Then open **`voyage.html`** with VS Code's **Live Preview** extension and edit a
+mission file beside it: as you save, a live harbour redraws — your captain name
+on the flag, a plotted course, cargo loading, your fleet sailing. The panel
+teaches the idea (variables, types, classes…) for the mission you're on.
+
+Full setup (one-time) in `HOW_TO_PLAY.md`. Fair winds, captain.

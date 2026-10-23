@@ -80,10 +80,22 @@ def _fingerprint() -> float:
     return latest
 
 
+def _redraw_voyage():
+    """Regenerate voyage.html (the live harbour view) — ignore any error."""
+    try:
+        subprocess.run([sys.executable, "sim.py", "voyage.html"],
+                       capture_output=True, timeout=30)
+    except Exception:
+        pass
+
+
 def watch():
     last = -1.0
+    _redraw_voyage()  # make voyage.html exist before you open Live Preview
     print(f"{YELL}watch mode — edit a mission, hit save, and this updates itself. "
           f"Ctrl+C to stop.{RESET}")
+    print(f"{DIM}tip: open voyage.html with VS Code Live Preview to watch your "
+          f"harbour update as you code.{RESET}")
     time.sleep(1.0)
     try:
         while True:
@@ -92,6 +104,7 @@ def watch():
                 last = fp
                 _clear()
                 render()
+                _redraw_voyage()
                 print(f"  {DIM}watching for changes… (Ctrl+C to stop){RESET}")
             time.sleep(1.0)
     except KeyboardInterrupt:
