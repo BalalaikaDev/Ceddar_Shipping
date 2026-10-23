@@ -1,13 +1,21 @@
 """Mission 04 — Load the hold.
 
-On the dock is a line of crates with different weights. Load every crate that
-is within your `limit`, keeping dock order. Return the list you loaded.
+Loop over the crates and keep the ones that fit.
 
-Concepts: lists, for-loops, building a new list, comparisons.
+Concepts: a list, a for-loop, a boolean, .append().
 """
 
 
 def load_hold(crates: list[int], limit: int) -> list[int]:
-    """Return the crates whose weight is <= limit, in their original order."""
-    # TODO: loop over crates and collect the ones that fit.
-    raise NotImplementedError("Mission 04: return the crates that fit")
+    # Step 1 — start with an empty hold (a list).
+    loaded = []
+
+    # Step 2 — look at each crate in turn.
+    for crate in crates:
+        # Step 3 — is this crate within the limit?
+        fits = False         # TODO: replace False with  crate <= limit
+        if fits:
+            loaded.append(crate)   # add it to the hold
+
+    # Step 4 — hand back everything you loaded.
+    return loaded

@@ -1,15 +1,21 @@
 """Mission 08 — Dispatch the fleet.
 
-You now command several boats. Given your fleet and a crate weight, return the
-NAMES of the boats that can carry it — in fleet order.
+Loop over a fleet of Boat objects; keep the names that can carry the cargo.
 
-Concepts: looping over a list of OBJECTS, calling their methods, building a list.
-Reuses the Boat class from Mission 07.
+Concepts: looping over objects, calling a method, building a list.
 """
 from missions.m07_boat import Boat
 
 
 def available(fleet: list[Boat], weight: int) -> list[str]:
-    """Return the names of boats in `fleet` whose can_carry(weight) is True."""
-    # TODO: loop over the fleet; keep the name of each boat that can carry it.
-    raise NotImplementedError("Mission 08: return the names of boats that can carry it")
+    # Step 1 — start an empty list of names.
+    names = []
+
+    # Step 2 — check each boat in the fleet.
+    for boat in fleet:
+        # Step 3 — can this boat carry the weight?
+        can = False          # TODO: replace False with  boat.can_carry(weight)
+        if can:
+            names.append(boat.name)
+
+    return names

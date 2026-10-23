@@ -1,13 +1,15 @@
 """Mission 01 — Sign the logbook.
 
-Before the harbour lets you sail, you sign on. The dispatcher needs a function
-that returns your captain name.
+Before you sail, you sign on. Build it in two small steps.
 
-Concepts: a function, returning a value, strings.
+Concepts: a variable, a string, return.
 """
 
 
 def captain() -> str:
-    """Return your captain name as a string, e.g. "darius"."""
-    # TODO: return your captain name (a lowercase, single word string).
-    raise NotImplementedError("Mission 01: return your captain name")
+    # Step 1 — put your captain name in a VARIABLE.
+    #   A variable is a name for a value. A string is text in quotes.
+    name = ""        # TODO: replace "" with your name, lowercase, e.g. "darius"
+
+    # Step 2 — hand the value back to the harbour.
+    return name

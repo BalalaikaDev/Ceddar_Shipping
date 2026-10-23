@@ -1,22 +1,17 @@
 """Mission 07 — Build a boat.
 
-So far you've written loose functions. A class lets you bundle DATA (a boat's
-name and capacity) with BEHAVIOUR (whether it can carry a crate) into one thing
-you can make many of.
+Your first class: data (name, capacity) + behaviour (can_carry) in one object.
 
 Concepts: class, __init__, self, attributes, a method.
-
-Fill in the two TODOs. `self` is "this particular boat".
 """
 
 
 class Boat:
     def __init__(self, name: str, capacity: int):
-        # TODO: store the two arguments on the boat:
-        #   self.name = name
-        #   self.capacity = capacity
-        raise NotImplementedError("Mission 07a: store name and capacity on self")
+        # Step 1 — store the two values on THIS boat. `self` means this boat.
+        self.name = "???"    # TODO: replace "???" with  name
+        self.capacity = 0    # TODO: replace 0 with  capacity
 
     def can_carry(self, weight: int) -> bool:
-        # TODO: return True if weight fits within this boat's capacity
-        raise NotImplementedError("Mission 07b: return whether weight fits")
+        # Step 2 — can this boat take `weight`? Compare to its own capacity.
+        return False         # TODO: replace False with  weight <= self.capacity
