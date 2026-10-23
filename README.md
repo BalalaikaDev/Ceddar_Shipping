@@ -20,19 +20,21 @@ and clearing a mission means your code provably does the job.
 | 04 | Load the hold | lists, `for` loops |
 | 05 | Read the manifest | dictionaries, safe lookup |
 
-**Act II — The Fleet** *(coming next).* Hire more boats and stop doing every run
-by hand:
+**Act II — The Fleet.** Hire more boats and stop doing every run by hand. These
+rungs climb into the exact stack that powers real systems like
+[runi-os](https://github.com/BalalaikaDev/runi-os):
 
-- **reuse your work** — one `deliver()` routine many boats can run *(functions)*
-- **a boat with a name, capacity and position** — your first **class** *(objects)*
-- **dispatch the whole fleet at once** — loop over your boats *(iteration)*
-- **the route network** — ports linked by shipping lanes: a **graph** — the idea
-  behind **Neo4j**
-- **radio the harbour for orders** — calling an **API**, the idea behind **FastAPI**
-- **🚢 containers** — pack each cargo so it runs anywhere: the idea behind **Docker**
+| # | Mission | You learn |
+|---|---------|-----------|
+| 06 | Count the cost | functions calling functions |
+| 07 | Build a boat | your first **class** (objects) |
+| 08 | Dispatch the fleet | looping over objects |
+| 09 | The route network | **graphs** — the idea behind **Neo4j** |
+| 10 | Radio the harbour | nested data / **APIs** — the idea behind **FastAPI** |
+| 11 | Pack a container | standard units — the idea behind **Docker** 🚢 |
 
-By the end you'll have met — in a game — the exact stack that powers real
-systems like [runi-os](https://github.com/BalalaikaDev/runi-os).
+*More acts to come: a real FastAPI + Neo4j + Docker capstone that turns the game
+into a working mini-platform.*
 
 ## Set sail
 ```
