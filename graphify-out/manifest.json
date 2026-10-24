@@ -6,81 +6,81 @@
     "semantic_hash": ""
   },
   "missions/__init__.py": {
-    "mtime": 1792729797.1213114,
-    "seen": 1792752318.799602,
+    "mtime": 1792790765.2422948,
+    "seen": 1792804959.4662967,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": ""
   },
   "missions/m01_signon.py": {
-    "mtime": 1792731287.4490552,
-    "seen": 1792752318.7996058,
-    "ast_hash": "15f9f156111af3047529907a3324d274",
+    "mtime": 1792790765.242355,
+    "seen": 1792804959.466302,
+    "ast_hash": "e500ff40f712073b8c189d092cf2097a",
     "semantic_hash": ""
   },
   "missions/m02_course.py": {
-    "mtime": 1792729797.1213114,
-    "seen": 1792752318.7996078,
-    "ast_hash": "70bc304d134871b9507687ef0a54b58b",
+    "mtime": 1792790765.2422948,
+    "seen": 1792804959.4663045,
+    "ast_hash": "dd9c9778c1df4aafcc5d1e8af2dcaad9",
     "semantic_hash": ""
   },
   "missions/m03_weigh.py": {
-    "mtime": 1792729797.1214004,
-    "seen": 1792752318.7996097,
-    "ast_hash": "60c2b5981f19c8c658ccadeacbe5651c",
+    "mtime": 1792790765.2423759,
+    "seen": 1792804959.4663072,
+    "ast_hash": "9a4d064cb8411685fa2aae1287cc0b97",
     "semantic_hash": ""
   },
   "missions/m04_load.py": {
-    "mtime": 1792729797.1214235,
-    "seen": 1792752318.7996109,
-    "ast_hash": "7aa9ea50a69cbf9e4c63440121fd062b",
+    "mtime": 1792790765.2423966,
+    "seen": 1792804959.466309,
+    "ast_hash": "b1cdf79137912e25917b423230ae7212",
     "semantic_hash": ""
   },
   "missions/m05_manifest.py": {
-    "mtime": 1792729797.121447,
-    "seen": 1792752318.7996125,
-    "ast_hash": "798292e6f2073c9747fb67f50cc2edb7",
+    "mtime": 1792790765.2424161,
+    "seen": 1792804959.4663112,
+    "ast_hash": "7a0d8f0903ff34d971a452c79238b2c5",
     "semantic_hash": ""
   },
   "missions/m06_logistics.py": {
-    "mtime": 1792729797.1211462,
-    "seen": 1792752318.7996137,
-    "ast_hash": "ed5053191b97251c554ae867ec4ba454",
+    "mtime": 1792790765.2421424,
+    "seen": 1792804959.4663131,
+    "ast_hash": "d655b6dae9fab31a4583ee4f0608be6b",
     "semantic_hash": ""
   },
   "missions/m07_boat.py": {
-    "mtime": 1792729797.1212008,
-    "seen": 1792752318.799615,
-    "ast_hash": "a0bd2c1e83c1700a61813c65de8142a7",
+    "mtime": 1792790765.2421913,
+    "seen": 1792804959.4663148,
+    "ast_hash": "cbd93adb7908b43fc249d5b9f09b7c5f",
     "semantic_hash": ""
   },
   "missions/m08_dispatch.py": {
-    "mtime": 1792729797.1212225,
-    "seen": 1792752318.7996163,
-    "ast_hash": "e36a3831bc9dd926ae1058952603ae4f",
+    "mtime": 1792790765.2422118,
+    "seen": 1792804959.4663167,
+    "ast_hash": "c3a46a6d6e5459750da3a3e2ddda2159",
     "semantic_hash": ""
   },
   "missions/m09_routes.py": {
-    "mtime": 1792729797.1212432,
-    "seen": 1792752318.7996175,
-    "ast_hash": "41b10deb082c62091c893091258db45c",
+    "mtime": 1792790765.2422352,
+    "seen": 1792804959.466319,
+    "ast_hash": "024ae5aade064e5a7b279c1c2dd58825",
     "semantic_hash": ""
   },
   "missions/m10_harbour.py": {
-    "mtime": 1792729797.1212626,
-    "seen": 1792752318.799619,
-    "ast_hash": "f0bf80a766297f441bed1f3373a370de",
+    "mtime": 1792790765.2422564,
+    "seen": 1792804959.4663212,
+    "ast_hash": "12ae028f7f85f0351ac9ce6f27a62596",
     "semantic_hash": ""
   },
   "missions/m11_container.py": {
-    "mtime": 1792729797.1212833,
-    "seen": 1792752318.7996204,
-    "ast_hash": "e006391ba52962520dca3adbfd03d7f9",
+    "mtime": 1792790765.242276,
+    "seen": 1792804959.4663234,
+    "ast_hash": "4cd8cbb6844d7d73b2fde6b50b657a75",
     "semantic_hash": ""
   },
   "play.py": {
-    "mtime": 1792731358.4435933,
-    "seen": 1792752318.7996218,
-    "ast_hash": "6e419d0e0fb3f83dd3756f64077927ba",
+    "mtime": 1792762496.6294074,
+    "seen": 1792804959.4663262,
+    "ast_hash": "d359ba61e409acc3d8c8fcb620fb61ed",
     "semantic_hash": ""
   },
   "tests/test_m01.py": {
@@ -150,15 +150,15 @@
     "semantic_hash": ""
   },
   "HOW_TO_PLAY.md": {
-    "mtime": 1792728490.338615,
-    "seen": 1792752318.7996378,
-    "ast_hash": "f2aca183751a71c82e0ba37409df2997",
+    "mtime": 1792762516.0454085,
+    "seen": 1792804959.4663584,
+    "ast_hash": "49a4fed86bbf45bbb6101fb36cff6b36",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792729834.7195027,
-    "seen": 1792752318.799639,
-    "ast_hash": "374c124ead1ecc8ca70633c4d03195d6",
+    "mtime": 1792762531.5574093,
+    "seen": 1792804959.4663603,
+    "ast_hash": "493553d24a81bf6d7d870ea60158a008",
     "semantic_hash": ""
   },
   "SETUP.md": {
@@ -201,6 +201,18 @@
     "mtime": 1792728093.2554493,
     "seen": 1792752318.7996476,
     "ast_hash": "bf408a16b2ce8e61791d1cc776347eac",
+    "semantic_hash": ""
+  },
+  "sim.py": {
+    "mtime": 1792790749.2252858,
+    "seen": 1792804959.4663296,
+    "ast_hash": "4dd6a34843d7468b1a754303b026d7ea",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1792752318.8606014,
+    "seen": 1792804959.4663568,
+    "ast_hash": "9513a5e021ee313adbe7678e8e68b7ab",
     "semantic_hash": ""
   }
 }

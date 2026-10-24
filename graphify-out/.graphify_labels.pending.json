@@ -3,7 +3,7 @@
   "1": "captain",
   "2": "play.py",
   "3": "m06_logistics.py",
-  "4": "m09_routes.py",
+  "4": "sim.py",
   "5": "Setup on a fresh PC",
   "6": "eta_hours",
   "7": "decide",
@@ -18,5 +18,6 @@
   "16": "How to play",
   "17": "Cedar Shipping",
   "18": "conftest.py",
-  "19": "__init__.py"
+  "19": "__init__.py",
+  "20": "AGENTS.md"
 }
